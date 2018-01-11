@@ -32,30 +32,30 @@ function displayheroInfo() {
 		const response = object.data;
 
 		// Creating a div to hold the hero`
-		const heroDiv = $("<div class='hero'>");
+		const heroDiv = $("<div class='hero table'>");
 
 		// for each element in response array store the rating/img data
 		response.forEach(function(o) {
 
 			// Creating an element to hold the rating
-			const rating = $("<p>").text("Rating: " + o.rating);
+			const rating = $("<tr><p class='rating'></tr>").text("Rating: " + o.rating);
 
 			// Appending rating
 			heroDiv.append(rating);
 
-			const still_image = o.images.fixed_width_still.url
+			const still_image = o.images.fixed_height_still.url
 
 			// Creating an element to hold the still image
-			const still = $("<img class='still'>").attr("src", still_image).attr("data-still", still_image);
+			const still = $("<img class='still image'>").attr("src", still_image).attr("data-still", still_image);
 
 			// Appending the image
 			heroDiv.append(still);
 		
 			// Creating an element to hold the gif url
-			const gif_url = o.images.fixed_width.url
+			const gif_url = o.images.fixed_height.url
 
 			//Creating an element to hold the gif
-			const gif = $("<img class='gif'>").attr("src", gif_url);
+			const gif = $("<img class='gif col-sm-3'>").attr("src", gif_url);
 
 			// Hiding all gifs to display only the still image
 			gif.hide();
