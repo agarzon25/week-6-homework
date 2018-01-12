@@ -63,6 +63,7 @@ function displayheroInfo() {
 			// Appending the image
 			finalImage.append(gif);
 
+			// Appending finalImage to heroDiv
 			heroDiv.append(finalImage);
 		});
 
@@ -71,7 +72,7 @@ function displayheroInfo() {
 	})
 }
 
-// Creating 
+// Click between gifs
 function runGif() {
 
 	// Obtaining still src url
