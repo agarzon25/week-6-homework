@@ -10,9 +10,6 @@ function displayheroInfo() {
 	//url for selected hero
 	const queryURL = "https://api.giphy.com/v1/gifs/search?q=" + hero + "&api_key=SJQy3yR5xwmDtqTM87GGATjhpNBnQB6I&limit=10";
 
-	// gif url list
-	//const gif_list = [];
-
 	// Creating an AJAX call for the specific hero button being clicked
 	$.ajax({
 
@@ -32,36 +29,41 @@ function displayheroInfo() {
 		const response = object.data;
 
 		// Creating a div to hold the hero`
-		const heroDiv = $("<div class='hero table'>");
+		const heroDiv = $("<div class='hero table-inverse row'>");
 
 		// for each element in response array store the rating/img data
 		response.forEach(function(o) {
 
+			// Const for rating and img div together
+			const finalImage = $("<div class='finalImage'>")
+
 			// Creating an element to hold the rating
-			const rating = $("<tr><p class='rating'></tr>").text("Rating: " + o.rating);
+			const rating = $("<p class='rating'>").text("Rating: " + o.rating);
 
 			// Appending rating
-			heroDiv.append(rating);
+			finalImage.append(rating);
 
-			const still_image = o.images.fixed_height_still.url
+			const still_image = o.images.fixed_height_small_still.url
 
 			// Creating an element to hold the still image
-			const still = $("<img class='still image'>").attr("src", still_image).attr("data-still", still_image);
+			const still = $("<img class='still'>").attr("src", still_image).attr("data-still", still_image);
 
 			// Appending the image
-			heroDiv.append(still);
+			finalImage.append(still);
 		
 			// Creating an element to hold the gif url
-			const gif_url = o.images.fixed_height.url
+			const gif_url = o.images.fixed_height_small.url
 
 			//Creating an element to hold the gif
-			const gif = $("<img class='gif col-sm-3'>").attr("src", gif_url);
+			const gif = $("<img>").attr("src", gif_url);
 
 			// Hiding all gifs to display only the still image
 			gif.hide();
 
 			// Appending the image
-			heroDiv.append(gif);
+			finalImage.append(gif);
+
+			heroDiv.append(finalImage);
 		});
 
 		// Displaying the entire heroDiv generated after the click

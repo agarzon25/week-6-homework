@@ -1,4 +1,4 @@
-button,div,form,input {
+button,div,form,input,img {
 	margin: 10px;
 	font-family: 'VT323', monospace;
 }
@@ -7,12 +7,7 @@ button,div,form,input {
 	display: inline-table;
 }
 
-.image {
-	display: block;
-	float: bottom;
-}
-
-.rating {
-	display: block;
-	float: top;
-}
+/*img {
+	width: 150px;
+	height: 200px;
+}*/
